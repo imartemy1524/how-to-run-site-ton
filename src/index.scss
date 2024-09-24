@@ -65,3 +65,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+#root{
+  /*last - footer, should be at the bottom*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}

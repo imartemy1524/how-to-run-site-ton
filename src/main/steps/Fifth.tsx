@@ -26,16 +26,19 @@ export default function Fifth(){
                     Scan the QR code with your wallet <strong>which owns this domain name</strong>, and approve it
                 </li>
                 <li>
-                    Link domain using <a href={'https://dns.ton.org'} target={'_blank'}>TON DNS website</a>
+                    Link domain using <a href={'/subdomains'} target={'_blank'}>Manage</a> tab (it would be cheaper):
                     <br/>
                     <p>
-                        Go to you domain, click <q>Manage domain</q> button
+                        Enter your domain name and, click <q>Search</q> button
                     </p>
                     <p>
                         Into the <q>TON Site</q> field, enter your public key, which would be printed by <code>tonutils-reverse proxy</code>
                     </p>
                     <p>
                         <b>Example</b>: <code>..... Server's ADNL address is blablabla.adnl (db1ea0c4a6cf772181f512806636c2fc2bbaeb40b7ea3585060194b8be41ad7e) {"<-"} this is the key in (...) </code>
+                    </p>
+                    <p>
+                        Click <q>save</q> button
                     </p>
                 </li>
             </ol>

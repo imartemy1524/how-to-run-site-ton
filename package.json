@@ -12,11 +12,18 @@
   "dependencies": {
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^6.1.1",
+    "@ton/core": "^0.58.1",
+    "@ton/ton": "^15.0.0",
+    "@tonconnect/ui": "^2.0.9",
+    "@tonconnect/ui-react": "^2.0.9",
+    "@types/node": "^22.5.5",
     "http-server": "^14.1.1",
     "qr-code-styling": "^1.6.0-rc.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "sass": "^1.79.3"
+    "react-router-dom": "^6.26.2",
+    "sass": "^1.79.3",
+    "vite-plugin-node-polyfills": "^0.22.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

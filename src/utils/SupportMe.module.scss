@@ -1,0 +1,15 @@
+
+.canvas {
+    margin-left: auto;
+}
+
+.accordion {
+    display: flex;
+    @media (max-width: 800px) {
+        flex-direction: column;
+        .canvas{
+            margin-left: 0;
+            text-align: center;
+        }
+    }
+}
