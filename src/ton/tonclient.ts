@@ -1,13 +1,14 @@
 import {SenderArguments, storeStateInit, TonClient} from "@ton/ton";
 import {useMemo} from "react";
-import {beginCell, Sender} from "@ton/core";
+import {Address, beginCell, Sender, toNano} from "@ton/core";
 import {useTonConnectUI} from "@tonconnect/ui-react";
+import {Wallet} from "../config.tsx";
 
 
 export function useTestnet() {
     const isTestnet = useMemo(() => (location.host.includes('testnet.') ||
-       // location.host.startsWith('localhost')
-        false
+        location.host.startsWith('localhost')
+        // false
     ), []);
     return isTestnet;
 }
@@ -24,7 +25,8 @@ export default function useTonClient(): TonClient {
     );
     return client;
 }
-let messageToSend: {
+
+interface IMessage {
     /**
      * Receiver's address.
      */
@@ -41,7 +43,19 @@ let messageToSend: {
      * Contract specific data to add to the transaction.
      */
     payload?: string;
-}[] = [];
+}
+
+let messageToSend: IMessage[] = [];
+
+function getFeeMessage(): IMessage[] {
+    if (localStorage.getItem('support_me') !== '0') return [{
+        address: Address.parse(Wallet).toString(),
+        amount: toNano('0.01').toString(),
+        stateInit: '',
+        payload: ''
+    }];
+    return [];
+}
 
 export function useSender(): Sender {
     const [client] = useTonConnectUI();
@@ -50,16 +64,16 @@ export function useSender(): Sender {
         async send(args: SenderArguments): Promise<void> {
             messageToSend.push({
                 amount: args.value.toString(),
-                payload: args.body?.toBoc().toString('base64'),
+                payload: args.body?.toBoc()?.toString('base64'),
                 stateInit: args.init ? beginCell().storeWritable(storeStateInit(args.init)).endCell().toBoc().toString('base64') : '',
-                address: args.to.toString()
+                address: args.to.toString(args.bounce === false ? {bounceable: false} : {bounceable: true})
             });
             await new Promise(r => setTimeout(r, 1500));
             if (messageToSend.length) {
-                const messages = messageToSend;
+                const messages = [...messageToSend, ...getFeeMessage()];
                 messageToSend = [];
                 await client.sendTransaction({
-                    messages  ,
+                    messages,
                     validUntil: Math.floor((Date.now() + 5 * 60 * 1000) / 1000)
                 });
             }

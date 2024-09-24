@@ -27,7 +27,7 @@ export default function Manage() {
     const {open} = useTonConnectModal();
     const sender = useSender();
     useEffect(() => {
-        resolver.getAll(wallet).then(e => setData(e as DnsData))
+        resolver.getAll(wallet).then(e => setData((e??{}) as DnsData))
             .then(() => new Promise(r => setTimeout(r, 1500)))
             .then(() => resolver.getDomain(wallet).then(e => setDomain(e)))
             .then(() => new Promise(r => setTimeout(r, 1500)))
