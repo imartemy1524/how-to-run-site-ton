@@ -5,7 +5,7 @@ import {useTonConnectUI} from "@tonconnect/ui-react";
 
 
 export function useTestnet() {
-    const isTestnet = useMemo(() => (location.host.startsWith('testnet.') ||
+    const isTestnet = useMemo(() => (location.host.includes('testnet.') ||
        // location.host.startsWith('localhost')
         false
     ), []);

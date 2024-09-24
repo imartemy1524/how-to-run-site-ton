@@ -7,6 +7,7 @@ import Footer from "./Footer.tsx";
 import {Alert, createTheme, ThemeProvider} from "@mui/material";
 import Manage from "./manage/Manage.tsx";
 import {useTestnet} from "./ton/tonclient.ts";
+import MyDomains from "./my-domains/my-domains.tsx";
 
 const theme = createTheme({
     components: {
@@ -61,7 +62,7 @@ export default function App() {
                             <Route path="/" element={<Main/>}/>
                             <Route path="/subdomains" element={<Subdomains/>}/>
                             <Route path="/manage/:wallet" element={<Manage/>}/>
-                            <Route path="/my-domains" element={<Manage/>}/>
+                            <Route path="/my-domains" element={<MyDomains/>}/>
                         </Routes>
                     </div>
                     <Footer/>

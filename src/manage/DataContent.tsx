@@ -70,6 +70,7 @@ export default function DataContent(
                 <Button variant={'contained'}
                         onClick={createSubdomains}>{data.dns_next_resolver ? 'Reset' : 'Create'} subdomains
                     contract</Button>
+                <br/><br/>
             </div>
         }
         {
