@@ -37,7 +37,7 @@ export default function NextDnsResolver({address, parent}: { address: Address, p
             m.delete(name);
             return m;
         });
-    }, []);
+    }, [contract, sender]);
 
     async function addDomain(i: number, name: string) {
         const el = Object.fromEntries(
