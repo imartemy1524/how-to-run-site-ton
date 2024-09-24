@@ -40,14 +40,17 @@ export default function Manage() {
         const subdomainContract = provider.open(SubdomainManager.createFromConfig({
             owner: Address.parse(owner)
         }, 0));
+        await new Promise(r=>setTimeout(r, 1000))
         await Promise.all([
             subdomainContract.sendDeploy(sender, toNano('0.03')),
             resolver.setSubdomains(sender, wallet, subdomainContract.address)
         ]);
         for (let i = 0; i < 15; i++) {
-            await new Promise(r => setTimeout(r, 10000));
-            const d = await resolver.getAll(wallet);
-            setData(d as DnsData);
+            try {
+                await new Promise(r => setTimeout(r, 10000));
+                const d = await resolver.getAll(wallet);
+                setData(d as DnsData);
+            }catch (e){}
         }
 
     }, [owner, sender, wallet, provider]);
@@ -130,6 +133,21 @@ export default function Manage() {
                     <li><code>testnet.howtorunsite.ton</code> linked to this site</li>
                     <li><code>another.testnet.howtorunsite.ton</code> linked to this site</li>
                 </ul>
+            </p>
+            <h3>Typical errors</h3>
+            <ul>
+                <li>
+                    <h3><q>Subdomains</q> contract is not in <code>active</code> state.</h3>
+                    <div>Try redeploying this contract using <q>Reset subdomains contract</q> button</div>
+                </li>
+                <li>
+                    <h3>Domains with "." not working</h3>
+                    <div>
+                        They shouldn't - you need to create recursive chain of subdomains, see description above how to do it
+                    </div>
+                </li>
+            </ul>
+            <p>
             </p>
         </div>
     )
