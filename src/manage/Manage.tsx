@@ -87,7 +87,6 @@ export default function Manage() {
                     }
                 </CardContent>
                 <CardActions disableSpacing>
-                    bob bub
                 </CardActions>
             </Card>
             <h2>What is it?</h2>
