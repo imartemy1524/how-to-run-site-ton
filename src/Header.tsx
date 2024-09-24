@@ -10,7 +10,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import TonLogo from "./assets/ton_symbol.svg"
+import TonLogo from "./assets/favicon-small.avif"
 import MenuIcon from "./assets/Menu.svg";
 import {useTonAddress, useTonConnectModal, useTonConnectUI} from "@tonconnect/ui-react";
 import {useNavigate} from "react-router-dom";
@@ -106,11 +106,11 @@ export function Header() {
                             textDecoration: 'none',
                         }}
                     >
-                        <img src={TonLogo} height={"40px"} width={"40px"} />
+                        <img src={TonLogo} height={"40px"} width={"40px"} style={{borderRadius: '1000px'}} />
 
                     </Typography>
                     <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
-                        <img src={TonLogo} height={"40px"} width={"40px"} style={{marginTop: "15px"}}/>
+                        <img src={TonLogo} height={"40px"} width={"40px"} style={{marginTop: "15px", borderRadius: '1000px'}}/>
                         <Button
                             onClick={() => {
                                 navigate('/');

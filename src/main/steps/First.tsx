@@ -15,7 +15,7 @@ export default function First() {
             </p>
 
             <p>
-                Now, when you domain is "on auction", you'll need to wait for 1 hour, so lets go to the next step.
+                Now, when your domain is "on auction", you'll need to wait for 1 hour, so lets go to the next step.
             </p>
         </>
     )

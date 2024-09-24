@@ -44,7 +44,7 @@ export default function Fifth(){
             </ol>
             <p>
                 Everytime you change your private key (for example, by losing config file or migrating to new version),
-                you need repeat linking domain process again.
+                you need to repeat linking domain process again.
             </p>
 
         </>
